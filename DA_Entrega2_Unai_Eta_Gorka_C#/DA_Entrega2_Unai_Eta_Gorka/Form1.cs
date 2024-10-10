@@ -9,10 +9,11 @@ namespace DA_Entrega2_Unai_Eta_Gorka
         public Form1()
         {
             InitializeComponent();
+            VerificarConexion();  
         }
         private void VerificarConexion()
         {
-            string connectionString = "server=localhost:3306;database=entrega2_da;user=root;password=1WMG2023;";
+            string connectionString = "server=localhost;port=3306;database=entrega2_da;user=root;password=1WMG2023;";
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
             {
                 try
