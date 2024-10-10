@@ -9,9 +9,9 @@ namespace DA_Entrega2_Unai_Eta_Gorka
         public Form1()
         {
             InitializeComponent();
-            VerificarConexion();  
         }
-        private void VerificarConexion()
+
+        private void button1_Enter_Click(object sender, EventArgs e)
         {
             string connectionString = "server=localhost;port=3306;database=entrega2_da;user=root;password=1WMG2023;";
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
@@ -19,14 +19,32 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 try
                 {
                     conexion.Open();
-                    if (conexion.State == System.Data.ConnectionState.Open)
+
+                    string nombreUsuario = textBox1_usuraio.Text; // como un scanner
+                    string dniUsuario = textBox2_contraseña.Text;
+
+                    string query = "SELECT COUNT(*) FROM langilea WHERE izena = @nombre AND nan = @dni";
+
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
-                        MessageBox.Show("Conexión exitosa a la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        comando.Parameters.AddWithValue("@nombre", nombreUsuario);
+                        comando.Parameters.AddWithValue("@dni", dniUsuario);
+
+                        int resultado = Convert.ToInt32(comando.ExecuteScalar());
+
+                        if (resultado > 0)
+                        {
+                            MessageBox.Show("¡Todo correcto!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nombre de usuario o DNI incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
-                catch (MySqlException)
+                catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error al conectar a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error al conectar o consultar la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
