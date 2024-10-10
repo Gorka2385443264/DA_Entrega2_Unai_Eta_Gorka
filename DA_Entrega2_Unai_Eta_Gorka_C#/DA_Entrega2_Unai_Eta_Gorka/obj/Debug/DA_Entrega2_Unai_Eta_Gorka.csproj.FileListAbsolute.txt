@@ -43,3 +43,4 @@ C:\Users\barto\source\repos\DA_Entrega2_Unai_Eta_Gorka\DA_Entrega2_Unai_Eta_Gork
 C:\Users\barto\source\repos\DA_Entrega2_Unai_Eta_Gorka\DA_Entrega2_Unai_Eta_Gorka\obj\Debug\DA_Entrega2_Unai_Eta_Gorka.csproj.SuggestedBindingRedirects.cache
 C:\Users\barto\source\repos\DA_Entrega2_Unai_Eta_Gorka\DA_Entrega2_Unai_Eta_Gorka\obj\Debug\DA_Entrega2_Unai_Eta_Gorka.exe.config
 C:\Users\barto\source\repos\DA_Entrega2_Unai_Eta_Gorka\DA_Entrega2_Unai_Eta_Gorka\obj\Debug\DA_Entre.7922D34B.Up2Date
+C:\Users\barto\source\repos\DA_Entrega2_Unai_Eta_Gorka\DA_Entrega2_Unai_Eta_Gorka\obj\Debug\DA_Entrega2_Unai_Eta_Gorka.Form2.resources

@@ -20,7 +20,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 {
                     conexion.Open();
 
-                    string nombreUsuario = textBox1_usuraio.Text; // como un scanner
+                    string nombreUsuario = textBox1_usuraio.Text;
                     string dniUsuario = textBox2_contraseña.Text;
 
                     string query = "SELECT COUNT(*) FROM langilea WHERE izena = @nombre AND nan = @dni";
@@ -34,7 +34,9 @@ namespace DA_Entrega2_Unai_Eta_Gorka
 
                         if (resultado > 0)
                         {
-                            MessageBox.Show("¡Todo correcto!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Form2 nuevaPagina = new Form2();
+                            nuevaPagina.Show();
+                            this.Hide(); 
                         }
                         else
                         {
