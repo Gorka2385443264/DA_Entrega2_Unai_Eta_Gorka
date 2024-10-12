@@ -23,7 +23,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                     string nombreUsuario = textBox1_usuraio.Text;
                     string dniUsuario = textBox2_contraseña.Text;
 
-                    string query = "SELECT COUNT(*) FROM langilea WHERE izena = @nombre AND nan = @dni";
+                    string query = "SELECT COUNT(*) FROM langilea WHERE izena = @nombre AND nan = @dni AND arduraduna = 1";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {

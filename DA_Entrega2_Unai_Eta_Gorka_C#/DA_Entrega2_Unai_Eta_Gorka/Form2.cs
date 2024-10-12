@@ -77,7 +77,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Errorea: " + ex.Message);
+                    MessageBox.Show("Errorea: " + ex.Message + ex.StackTrace);
                 }
 
             }
@@ -107,7 +107,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                     {
 
                         comando.Parameters.AddWithValue("@id", id);
-                       
+
                         int emaitza = comando.ExecuteNonQuery();
 
                         if (emaitza > 0)
@@ -126,7 +126,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                     MessageBox.Show("Errorea: " + ex.Message);
                 }
 
-                string query2 = "UPDATE entrega2_da.langilea SET arduraduna = 1 WHERE id = "+id;
+                string query2 = "UPDATE entrega2_da.langilea SET arduraduna = 1 WHERE id_langilea = " + id;
 
                 using (MySqlConnection conexion2 = new MySqlConnection(connectionString))
                 {
@@ -138,7 +138,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                         {
 
                             comando.Parameters.AddWithValue("@id", id);
-                       
+
                             int emaitza = comando.ExecuteNonQuery();
 
                             if (emaitza > 0)
@@ -157,10 +157,9 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                         MessageBox.Show("Errorea: " + ex.Message);
                     }
                 }
+            }
+        }
     }
 }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+   
