@@ -39,6 +39,13 @@
             this.txtIdLangilea = new System.Windows.Forms.TextBox();
             this.txtIdErabiltzailea = new System.Windows.Forms.TextBox();
             this.btnGehitu2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -53,7 +60,7 @@
             // 
             // btnGehitu
             // 
-            this.btnGehitu.Location = new System.Drawing.Point(137, 279);
+            this.btnGehitu.Location = new System.Drawing.Point(137, 280);
             this.btnGehitu.Name = "btnGehitu";
             this.btnGehitu.Size = new System.Drawing.Size(75, 23);
             this.btnGehitu.TabIndex = 1;
@@ -63,43 +70,38 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(132, 127);
+            this.txtId.Location = new System.Drawing.Point(165, 127);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 22);
             this.txtId.TabIndex = 2;
-            this.txtId.Text = "id";
             // 
             // txtIzena
             // 
-            this.txtIzena.Location = new System.Drawing.Point(132, 183);
+            this.txtIzena.Location = new System.Drawing.Point(165, 183);
             this.txtIzena.Name = "txtIzena";
             this.txtIzena.Size = new System.Drawing.Size(100, 22);
             this.txtIzena.TabIndex = 3;
-            this.txtIzena.Text = "Izena";
             // 
             // txtAbizena
             // 
-            this.txtAbizena.Location = new System.Drawing.Point(132, 211);
+            this.txtAbizena.Location = new System.Drawing.Point(165, 211);
             this.txtAbizena.Name = "txtAbizena";
             this.txtAbizena.Size = new System.Drawing.Size(100, 22);
             this.txtAbizena.TabIndex = 4;
-            this.txtAbizena.Text = "Abizena";
             // 
             // txtTel
             // 
-            this.txtTel.Location = new System.Drawing.Point(132, 239);
+            this.txtTel.Location = new System.Drawing.Point(165, 239);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(100, 22);
             this.txtTel.TabIndex = 5;
-            this.txtTel.Text = "Telefonoa";
             // 
             // txtNan
             // 
-            this.txtNan.Location = new System.Drawing.Point(132, 155);
+            this.txtNan.Location = new System.Drawing.Point(165, 155);
             this.txtNan.Name = "txtNan";
             this.txtNan.Size = new System.Drawing.Size(100, 22);
             this.txtNan.TabIndex = 6;
-            this.txtNan.Text = "NAN";
             // 
             // label2
             // 
@@ -112,19 +114,17 @@
             // 
             // txtIdLangilea
             // 
-            this.txtIdLangilea.Location = new System.Drawing.Point(409, 127);
+            this.txtIdLangilea.Location = new System.Drawing.Point(473, 127);
             this.txtIdLangilea.Name = "txtIdLangilea";
             this.txtIdLangilea.Size = new System.Drawing.Size(100, 22);
             this.txtIdLangilea.TabIndex = 8;
-            this.txtIdLangilea.Text = "id langilea";
             // 
             // txtIdErabiltzailea
             // 
-            this.txtIdErabiltzailea.Location = new System.Drawing.Point(409, 155);
+            this.txtIdErabiltzailea.Location = new System.Drawing.Point(473, 155);
             this.txtIdErabiltzailea.Name = "txtIdErabiltzailea";
             this.txtIdErabiltzailea.Size = new System.Drawing.Size(100, 22);
             this.txtIdErabiltzailea.TabIndex = 9;
-            this.txtIdErabiltzailea.Text = "id erabiltzailea";
             // 
             // btnGehitu2
             // 
@@ -136,11 +136,82 @@
             this.btnGehitu2.UseVisualStyleBackColor = true;
             this.btnGehitu2.Click += new System.EventHandler(this.btnGehitu2_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(117, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 16);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Id";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(103, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 16);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Nan";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(92, 186);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 16);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Izena";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(92, 214);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Abizena";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(79, 242);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Telefonoa";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(363, 127);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Id langilea";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(363, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Id erabiltzailea";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnGehitu2);
             this.Controls.Add(this.txtIdErabiltzailea);
             this.Controls.Add(this.txtIdLangilea);
@@ -173,5 +244,12 @@
         private System.Windows.Forms.TextBox txtIdLangilea;
         private System.Windows.Forms.TextBox txtIdErabiltzailea;
         private System.Windows.Forms.Button btnGehitu2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

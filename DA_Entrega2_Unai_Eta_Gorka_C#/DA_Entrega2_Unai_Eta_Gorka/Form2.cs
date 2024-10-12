@@ -164,3 +164,8 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 }
     }
 }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
