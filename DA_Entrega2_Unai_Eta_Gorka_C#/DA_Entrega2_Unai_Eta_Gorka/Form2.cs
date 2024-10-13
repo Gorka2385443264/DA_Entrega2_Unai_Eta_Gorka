@@ -1,12 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DA_Entrega2_Unai_Eta_Gorka
@@ -20,12 +13,8 @@ namespace DA_Entrega2_Unai_Eta_Gorka
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            // Cadena de conexión
             string connectionString = "server=localhost;port=3306;database=entrega2_da;user=root;password=1WMG2023;";
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGehitu_Click(object sender, EventArgs e)
@@ -36,16 +25,18 @@ namespace DA_Entrega2_Unai_Eta_Gorka
             string abizena = txtAbizena.Text;
             string tel = txtTel.Text;
             string nan = txtNan.Text;
-            string arduraduna = "0";
+            string arduraduna = textBox1_arduraduna.Text; // Captura el valor del TextBox arduraduna
 
+            // Verifica si los campos están vacíos
             if (string.IsNullOrEmpty(izena) || string.IsNullOrEmpty(abizena) ||
-                string.IsNullOrEmpty(tel) || string.IsNullOrEmpty(nan))
+                string.IsNullOrEmpty(tel) || string.IsNullOrEmpty(nan) || string.IsNullOrEmpty(arduraduna))
             {
                 MessageBox.Show("Datu guztiak sartu mesedez.");
                 return;
             }
 
-            string query = "INSERT INTO entrega2_da.langilea (nan, izena, abizena, arduraduna, telefonoa) VALUES (@nan, @izena, @abizena, @arduraduna, @tel)";
+            // Inserta el nuevo langilea
+            string queryLangilea = "INSERT INTO entrega2_da.langilea (nan, izena, abizena, arduraduna, telefonoa) VALUES (@nan, @izena, @abizena, @arduraduna, @telefonoa); SELECT LAST_INSERT_ID();";
 
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
             {
@@ -53,21 +44,41 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 {
                     conexion.Open();
 
-                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    using (MySqlCommand comando = new MySqlCommand(queryLangilea, conexion))
                     {
-
                         comando.Parameters.AddWithValue("@nan", nan);
                         comando.Parameters.AddWithValue("@izena", izena);
                         comando.Parameters.AddWithValue("@abizena", abizena);
                         comando.Parameters.AddWithValue("@arduraduna", arduraduna);
                         comando.Parameters.AddWithValue("@telefonoa", tel);
 
+                        // Ejecuta el comando y obtiene el id del nuevo langilea
+                        long idLangilea = Convert.ToInt64(comando.ExecuteScalar());
 
-                        int emaitza = comando.ExecuteNonQuery();
-
-                        if (emaitza > 0)
+                        if (idLangilea > 0)
                         {
                             MessageBox.Show("Langilea ondo gehitu da.");
+
+                            // Verifica si arduraduna es 1 para hacer el insert en erabiltzailea
+                            if (arduraduna == "1")
+                            {
+                                string queryErabiltzailea = "INSERT INTO entrega2_da.erabiltzailea (id_langilea) VALUES (@id_langilea)";
+
+                                using (MySqlCommand comandoErabiltzailea = new MySqlCommand(queryErabiltzailea, conexion))
+                                {
+                                    comandoErabiltzailea.Parameters.AddWithValue("@id_langilea", idLangilea);
+
+                                    int result = comandoErabiltzailea.ExecuteNonQuery();
+                                    if (result > 0)
+                                    {
+                                        MessageBox.Show("Erabiltzailea ondo gehitu da.");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Arazoa erabiltzailea gehitzerakoan.");
+                                    }
+                                }
+                            }
                         }
                         else
                         {
@@ -79,87 +90,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 {
                     MessageBox.Show("Errorea: " + ex.Message + ex.StackTrace);
                 }
-
-            }
-        }
-
-        private void btnGehitu2_Click(object sender, EventArgs e)
-        {
-            string connectionString = "server=localhost;port=3306;database=entrega2_da;user=root;password=1WMG2023;";
-
-            string id = txtIdLangilea.Text;
-
-            if (string.IsNullOrEmpty(id))
-            {
-                MessageBox.Show("Datu guztiak sartu mesedez.");
-                return;
-            }
-
-            string query = "INSERT INTO entrega2_da.erabiltzailea (id_langilea) VALUES (@id)";
-
-            using (MySqlConnection conexion = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conexion.Open();
-
-                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
-                    {
-
-                        comando.Parameters.AddWithValue("@id", id);
-
-                        int emaitza = comando.ExecuteNonQuery();
-
-                        if (emaitza > 0)
-                        {
-                            MessageBox.Show("Erabiltzailea ondo gehitu da.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Erabiltzailea gehitzerakoan arazoa egon da.");
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Errorea: " + ex.Message);
-                }
-
-                string query2 = "UPDATE entrega2_da.langilea SET arduraduna = 1 WHERE id_langilea = " + id;
-
-                using (MySqlConnection conexion2 = new MySqlConnection(connectionString))
-                {
-                    try
-                    {
-                        conexion2.Open();
-
-                        using (MySqlCommand comando = new MySqlCommand(query2, conexion2))
-                        {
-
-                            comando.Parameters.AddWithValue("@id", id);
-
-                            int emaitza = comando.ExecuteNonQuery();
-
-                            if (emaitza > 0)
-                            {
-                                MessageBox.Show("Aldaketa ondo egin da.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Arazoa datuak aldatzerakoan.");
-                            }
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Errorea: " + ex.Message);
-                    }
-                }
             }
         }
     }
 }
-
-   

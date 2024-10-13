@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `langilea`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `langilea` (
-  `id_langilea` int NOT NULL,
+  `id_langilea` int NOT NULL AUTO_INCREMENT,
   `nan` char(9) NOT NULL,
   `izena` varchar(45) NOT NULL,
   `abizena` varchar(45) NOT NULL,
   `arduraduna` tinyint NOT NULL,
   `telefonoa` int NOT NULL,
   PRIMARY KEY (`id_langilea`,`nan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-09 21:43:13
+-- Dump completed on 2024-10-13  2:14:06

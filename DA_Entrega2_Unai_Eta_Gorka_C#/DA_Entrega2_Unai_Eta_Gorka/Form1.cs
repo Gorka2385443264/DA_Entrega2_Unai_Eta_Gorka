@@ -40,7 +40,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                         }
                         else
                         {
-                            MessageBox.Show("Nombre de usuario o DNI incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("EZ ZARA ARDURADUNA", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

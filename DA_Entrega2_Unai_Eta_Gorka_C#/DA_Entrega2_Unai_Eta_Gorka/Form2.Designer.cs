@@ -34,29 +34,26 @@
             this.txtAbizena = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.txtNan = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtIdLangilea = new System.Windows.Forms.TextBox();
-            this.btnGehitu2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label2_arduraduna = new System.Windows.Forms.Label();
+            this.textBox1_arduraduna = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(134, 112);
+            this.label1.Location = new System.Drawing.Point(321, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Langilea gehitu";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnGehitu
             // 
-            this.btnGehitu.Location = new System.Drawing.Point(137, 280);
+            this.btnGehitu.Location = new System.Drawing.Point(324, 329);
             this.btnGehitu.Name = "btnGehitu";
             this.btnGehitu.Size = new System.Drawing.Size(75, 23);
             this.btnGehitu.TabIndex = 1;
@@ -66,62 +63,36 @@
             // 
             // txtIzena
             // 
-            this.txtIzena.Location = new System.Drawing.Point(165, 183);
+            this.txtIzena.Location = new System.Drawing.Point(352, 173);
             this.txtIzena.Name = "txtIzena";
             this.txtIzena.Size = new System.Drawing.Size(100, 22);
             this.txtIzena.TabIndex = 3;
             // 
             // txtAbizena
             // 
-            this.txtAbizena.Location = new System.Drawing.Point(165, 211);
+            this.txtAbizena.Location = new System.Drawing.Point(352, 201);
             this.txtAbizena.Name = "txtAbizena";
             this.txtAbizena.Size = new System.Drawing.Size(100, 22);
             this.txtAbizena.TabIndex = 4;
             // 
             // txtTel
             // 
-            this.txtTel.Location = new System.Drawing.Point(165, 239);
+            this.txtTel.Location = new System.Drawing.Point(352, 229);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(100, 22);
             this.txtTel.TabIndex = 5;
             // 
             // txtNan
             // 
-            this.txtNan.Location = new System.Drawing.Point(165, 155);
+            this.txtNan.Location = new System.Drawing.Point(352, 145);
             this.txtNan.Name = "txtNan";
             this.txtNan.Size = new System.Drawing.Size(100, 22);
             this.txtNan.TabIndex = 6;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(406, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Erabiltzailea gehitu";
-            // 
-            // txtIdLangilea
-            // 
-            this.txtIdLangilea.Location = new System.Drawing.Point(473, 127);
-            this.txtIdLangilea.Name = "txtIdLangilea";
-            this.txtIdLangilea.Size = new System.Drawing.Size(100, 22);
-            this.txtIdLangilea.TabIndex = 8;
-            // 
-            // btnGehitu2
-            // 
-            this.btnGehitu2.Location = new System.Drawing.Point(426, 179);
-            this.btnGehitu2.Name = "btnGehitu2";
-            this.btnGehitu2.Size = new System.Drawing.Size(75, 23);
-            this.btnGehitu2.TabIndex = 10;
-            this.btnGehitu2.Text = "Gehitu";
-            this.btnGehitu2.UseVisualStyleBackColor = true;
-            this.btnGehitu2.Click += new System.EventHandler(this.btnGehitu2_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(103, 158);
+            this.label4.Location = new System.Drawing.Point(290, 148);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 16);
             this.label4.TabIndex = 12;
@@ -130,7 +101,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(92, 186);
+            this.label5.Location = new System.Drawing.Point(279, 176);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 16);
             this.label5.TabIndex = 13;
@@ -139,7 +110,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(92, 214);
+            this.label6.Location = new System.Drawing.Point(279, 204);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 14;
@@ -148,34 +119,39 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(79, 242);
+            this.label7.Location = new System.Drawing.Point(266, 232);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 16);
             this.label7.TabIndex = 15;
             this.label7.Text = "Telefonoa";
             // 
-            // label8
+            // label2_arduraduna
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(363, 127);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 16);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Id langilea";
+            this.label2_arduraduna.AutoSize = true;
+            this.label2_arduraduna.Location = new System.Drawing.Point(179, 268);
+            this.label2_arduraduna.Name = "label2_arduraduna";
+            this.label2_arduraduna.Size = new System.Drawing.Size(156, 16);
+            this.label2_arduraduna.TabIndex = 16;
+            this.label2_arduraduna.Text = "Arduraduna (0 EZ / 1 BAI)";
+            // 
+            // textBox1_arduraduna
+            // 
+            this.textBox1_arduraduna.Location = new System.Drawing.Point(352, 268);
+            this.textBox1_arduraduna.Name = "textBox1_arduraduna";
+            this.textBox1_arduraduna.Size = new System.Drawing.Size(100, 22);
+            this.textBox1_arduraduna.TabIndex = 17;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBox1_arduraduna);
+            this.Controls.Add(this.label2_arduraduna);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnGehitu2);
-            this.Controls.Add(this.txtIdLangilea);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNan);
             this.Controls.Add(this.txtTel);
             this.Controls.Add(this.txtAbizena);
@@ -198,13 +174,11 @@
         private System.Windows.Forms.TextBox txtAbizena;
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.TextBox txtNan;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtIdLangilea;
-        private System.Windows.Forms.Button btnGehitu2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label2_arduraduna;
+        private System.Windows.Forms.TextBox textBox1_arduraduna;
     }
 }
