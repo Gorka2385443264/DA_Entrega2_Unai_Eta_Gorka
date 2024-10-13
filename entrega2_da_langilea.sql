@@ -29,8 +29,9 @@ CREATE TABLE `langilea` (
   `abizena` varchar(45) NOT NULL,
   `arduraduna` tinyint NOT NULL,
   `telefonoa` int NOT NULL,
+  `is_deleted` tinyint NOT NULL,
   PRIMARY KEY (`id_langilea`,`nan`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `langilea` (
 
 LOCK TABLES `langilea` WRITE;
 /*!40000 ALTER TABLE `langilea` DISABLE KEYS */;
-INSERT INTO `langilea` VALUES (1,'12345678A','Mikel','Garcia',0,600123456),(2,'23456789B','Ane','Lopez',0,600234567),(3,'34567890C','Jon','Martinez',0,600345678),(4,'45678901D','Nerea','Sanchez',1,600456789),(5,'56789012E','Ibai','Fernandez',1,600567890),(6,'67890123F','Aitor','Gomez',1,600678901),(7,'78901234G','Maite','Diaz',1,600789012),(8,'89012345H','Iker','Larra',0,600890123);
+INSERT INTO `langilea` VALUES (1,'12345678A','Mikel','Garcia',1,600123456,0),(2,'23456789B','Ane','Lopez',0,600234567,0),(3,'34567890C','Jon','Martinez',0,600345678,0),(4,'45678901D','Nerea','Sanchez',1,600456789,0),(5,'56789012E','Ibai','Fernandez',1,600567890,0),(6,'67890123F','Aitor','Gomez',1,600678901,0),(7,'78901234G','Maite','Diaz',1,600789012,0),(8,'89012345H','Iker','Larra',1,600890123,0);
 /*!40000 ALTER TABLE `langilea` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-13  2:14:06
+-- Dump completed on 2024-10-13 19:14:00

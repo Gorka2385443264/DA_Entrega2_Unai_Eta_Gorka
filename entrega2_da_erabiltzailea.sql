@@ -25,8 +25,9 @@ DROP TABLE IF EXISTS `erabiltzailea`;
 CREATE TABLE `erabiltzailea` (
   `id_erabiltzailea` int NOT NULL AUTO_INCREMENT,
   `id_langilea` int NOT NULL,
+  `is_deleted` tinyint NOT NULL,
   PRIMARY KEY (`id_erabiltzailea`,`id_langilea`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +36,7 @@ CREATE TABLE `erabiltzailea` (
 
 LOCK TABLES `erabiltzailea` WRITE;
 /*!40000 ALTER TABLE `erabiltzailea` DISABLE KEYS */;
-INSERT INTO `erabiltzailea` VALUES (1,4),(2,5),(3,6),(4,7);
+INSERT INTO `erabiltzailea` VALUES (1,4,0),(2,5,0),(3,6,0),(4,7,0),(5,8,0),(6,8,0);
 /*!40000 ALTER TABLE `erabiltzailea` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-13  2:14:06
+-- Dump completed on 2024-10-13 19:14:00
