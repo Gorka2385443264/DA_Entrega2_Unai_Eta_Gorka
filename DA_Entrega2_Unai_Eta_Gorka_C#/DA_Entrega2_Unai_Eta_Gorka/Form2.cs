@@ -1,14 +1,18 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DA_Entrega2_Unai_Eta_Gorka
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        private string _nombreUsuario;
+
+        public Form2(string nombreUsuario)
         {
             InitializeComponent();
+            _nombreUsuario = nombreUsuario;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -24,9 +28,9 @@ namespace DA_Entrega2_Unai_Eta_Gorka
             string abizena = txtAbizena.Text;
             string tel = txtTel.Text;
             string nan = txtNan.Text;
-            string arduraduna = textBox1_arduraduna.Text; // Captura el valor del TextBox arduraduna
+            string arduraduna = textBox1_arduraduna.Text; 
 
-            // Verifica si los campos están vacíos
+            
             if (string.IsNullOrEmpty(izena) || string.IsNullOrEmpty(abizena) ||
                 string.IsNullOrEmpty(tel) || string.IsNullOrEmpty(nan) || string.IsNullOrEmpty(arduraduna))
             {
@@ -34,7 +38,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 return;
             }
 
-            // Inserta el nuevo langilea
+            
             string queryLangilea = "INSERT INTO entrega2_da.langilea (nan, izena, abizena, arduraduna, telefonoa, is_deleted) VALUES (@nan, @izena, @abizena, @arduraduna, @telefonoa, 0); SELECT LAST_INSERT_ID();";
 
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
@@ -51,14 +55,13 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                         comando.Parameters.AddWithValue("@arduraduna", arduraduna);
                         comando.Parameters.AddWithValue("@telefonoa", tel);
 
-                        // Ejecuta el comando y obtiene el id del nuevo langilea
                         long idLangilea = Convert.ToInt64(comando.ExecuteScalar());
 
                         if (idLangilea > 0)
                         {
                             MessageBox.Show("Langilea ondo gehitu da.");
+                            LogAction($"{_nombreUsuario} ha añadido al langilea (NAN: {nan}, Izena: {izena}, Abizena: {abizena}, Tel: {tel}, Arduraduna: {arduraduna}) a la hora {DateTime.Now}");
 
-                            // Verifica si arduraduna es 1 para hacer el insert en erabiltzailea
                             if (arduraduna == "1")
                             {
                                 string queryErabiltzailea = "INSERT INTO entrega2_da.erabiltzailea (id_langilea, is_deleted) VALUES (@id_langilea, 0)";
@@ -71,6 +74,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                                     if (result > 0)
                                     {
                                         MessageBox.Show("Erabiltzailea ondo gehitu da.");
+                                        LogAction($"{_nombreUsuario} ha añadido al erabiltzailea (ID: {idLangilea}) a la hora {DateTime.Now}");
                                     }
                                     else
                                     {
@@ -95,8 +99,8 @@ namespace DA_Entrega2_Unai_Eta_Gorka
         private void button1_kendu_Click(object sender, EventArgs e)
         {
             string connectionString = "server=localhost;port=3306;database=entrega2_da;user=root;password=1WMG2023;";
-            string nan = txtNan.Text; 
-            string hardDeleteInput = textBox1_hardDelete.Text; 
+            string nan = txtNan.Text;
+            string hardDeleteInput = textBox1_hardDelete.Text;
 
             if (string.IsNullOrEmpty(nan))
             {
@@ -145,13 +149,14 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                         }
 
                         MessageBox.Show("Langilea eta erabiltzailea ondo kendu dira (hard delete).");
+                        LogAction($"{_nombreUsuario} ha eliminado al langilea (ID: {idLangilea}) a la hora {DateTime.Now}");
                     }
                     else
                     {
-                        string queryLangilea = "UPDATE entrega2_da.langilea SET is_deleted = 1 WHERE nan = @nan";
+                        string queryLangilea = "UPDATE entrega2_da.langilea SET is_deleted = 1 WHERE id_langilea = @id_langilea";
                         using (MySqlCommand comandoLangilea = new MySqlCommand(queryLangilea, conexion))
                         {
-                            comandoLangilea.Parameters.AddWithValue("@nan", nan);
+                            comandoLangilea.Parameters.AddWithValue("@id_langilea", idLangilea);
                             comandoLangilea.ExecuteNonQuery();
                         }
 
@@ -162,7 +167,8 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                             comandoErabiltzailea.ExecuteNonQuery();
                         }
 
-                        MessageBox.Show("Erabiltzailea eta langilea ondo kendu dira (soft delete).");
+                        MessageBox.Show("Langilea eta erabiltzailea ondo kendu dira (soft delete).");
+                        LogAction($"{_nombreUsuario} ha realizado un soft delete del langilea (ID: {idLangilea}) a la hora {DateTime.Now}");
                     }
                 }
                 catch (Exception ex)
@@ -172,5 +178,21 @@ namespace DA_Entrega2_Unai_Eta_Gorka
             }
         }
 
+        private void LogAction(string message)
+        {
+            string filePath = "aldaketakLOG.txt"; 
+
+            
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath).Close();
+            }
+
+            
+            using (StreamWriter sw = File.AppendText(filePath))
+            {
+                sw.WriteLine(message);
+            }
+        }
     }
 }

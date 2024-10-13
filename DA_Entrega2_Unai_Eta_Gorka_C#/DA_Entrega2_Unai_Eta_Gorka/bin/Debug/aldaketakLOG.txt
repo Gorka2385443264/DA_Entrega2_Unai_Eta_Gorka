@@ -1,0 +1,6 @@
+Nerea ha iniciado sesión a la hora 13/10/2024 19:35:18
+Nerea ha añadido al langilea (NAN: 1, Izena: g, Abizena: g, Tel: 1, Arduraduna: 0) a la hora 13/10/2024 19:35:46
+Nerea ha añadido al langilea (NAN: 4356478, Izena: g, Abizena: g, Tel: 1, Arduraduna: 1) a la hora 13/10/2024 19:36:03
+Nerea ha añadido al erabiltzailea (ID: 18) a la hora 13/10/2024 19:36:06
+Nerea ha realizado un soft delete del langilea (ID: 18) a la hora 13/10/2024 19:36:19
+Nerea ha eliminado al langilea (ID: 18) a la hora 13/10/2024 19:36:31

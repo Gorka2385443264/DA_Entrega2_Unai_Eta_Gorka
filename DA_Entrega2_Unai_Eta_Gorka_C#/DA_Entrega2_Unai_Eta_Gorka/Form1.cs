@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO; 
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -23,7 +24,7 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                     string nombreUsuario = textBox1_usuraio.Text;
                     string dniUsuario = textBox2_contraseña.Text;
 
-                    string query = "SELECT COUNT(*) FROM langilea WHERE izena = @nombre AND nan = @dni AND arduraduna = 1 AND is_deleted = 0\r\n ";
+                    string query = "SELECT COUNT(*) FROM langilea WHERE izena = @nombre AND nan = @dni AND arduraduna = 1 AND is_deleted = 0";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
@@ -34,9 +35,12 @@ namespace DA_Entrega2_Unai_Eta_Gorka
 
                         if (resultado > 0)
                         {
-                            Form2 nuevaPagina = new Form2();
+                            Form2 nuevaPagina = new Form2(nombreUsuario);
                             nuevaPagina.Show();
-                            this.Hide(); 
+                            this.Hide();
+
+                            
+                            LogAction($"{nombreUsuario} ha iniciado sesión a la hora {DateTime.Now}");
                         }
                         else
                         {
@@ -48,6 +52,23 @@ namespace DA_Entrega2_Unai_Eta_Gorka
                 {
                     MessageBox.Show($"Error al conectar o consultar la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void LogAction(string message)
+        {
+            string filePath = "aldaketakLOG.txt"; 
+
+            
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath).Close();
+            }
+
+            
+            using (StreamWriter sw = File.AppendText(filePath))
+            {
+                sw.WriteLine(message);
             }
         }
     }
